@@ -1,0 +1,9 @@
+streamlit
+langchain
+google-generativeai
+pypdf
+PyPDF2
+faiss-cpu
+gtts
+pillow
+pytesseract
