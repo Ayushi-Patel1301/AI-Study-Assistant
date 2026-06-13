@@ -40,9 +40,9 @@ def render_page():
 
     # ── Options ─────────────────────────────────────────────────────────────
     st.divider()
-    instructions      = st.text_area("Additional Instructions (optional)",
-                                     placeholder="e.g. Include numerical problems • Focus on Unit 3 • Add diagram questions",
-                                     height=80)
+    instructions       = st.text_area("Additional Instructions (optional)",
+                                      placeholder="e.g. Include numerical problems • Focus on Unit 3 • Add diagram questions",
+                                      height=80)
     include_answer_key = st.checkbox("📘 Generate Answer Key")
 
     # ── Generate ─────────────────────────────────────────────────────────────
@@ -58,11 +58,24 @@ def render_page():
                         title, subject, topics, int(total_marks), difficulty,
                         custom_pattern, instructions, include_answer_key, language
                     )
+                    st.session_state.paper_saved = False  # ANALYTICS: reset flag for new paper
                 except Exception as e:
                     st.error(f"Generation failed: {e}")
 
     # ── Output ───────────────────────────────────────────────────────────────
     if st.session_state.get("generated_paper"):
+
+        # ANALYTICS TRACKING: runs once per generated paper
+        if not st.session_state.get("paper_saved", False):
+            if "papers_generated" not in st.session_state:
+                st.session_state.papers_generated = 0
+            if "activity_history" not in st.session_state:
+                st.session_state.activity_history = []
+            st.session_state.papers_generated += 1
+            st.session_state.activity_history.append(f"Generated paper: {subject if subject.strip() else 'Unknown'}")
+            st.session_state.paper_saved = True  # ANALYTICS: mark as saved
+        # END ANALYTICS TRACKING
+
         st.divider()
         st.subheader("📄 Generated Question Paper")
         st.markdown('<div style="background:white;border:1.5px solid #DBEAFE;border-radius:14px;padding:32px 40px;">', unsafe_allow_html=True)
@@ -78,6 +91,7 @@ def render_page():
                             title, subject, topics, int(total_marks), difficulty,
                             custom_pattern, instructions, include_answer_key, language
                         )
+                        st.session_state.paper_saved = False  # ANALYTICS: reset so regenerate is also tracked
                         st.rerun()
                     except Exception as e:
                         st.error(f"Regeneration failed: {e}")

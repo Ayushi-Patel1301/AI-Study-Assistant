@@ -20,6 +20,19 @@ def show():
                 st.session_state.quiz = None
                 st.session_state.quiz_answers = {}
                 st.session_state.quiz_submitted = False
+                st.session_state.pdf_saved = False  # ANALYTICS: reset flag for new PDF
+
+            # ANALYTICS TRACKING: runs only when a new PDF is loaded
+            if not st.session_state.get("pdf_saved", False):
+                if "pdf_count" not in st.session_state:
+                    st.session_state.pdf_count = 0
+                if "activity_history" not in st.session_state:
+                    st.session_state.activity_history = []
+                st.session_state.pdf_count += 1
+                st.session_state.activity_history.append(f"Uploaded PDF: {pdf_file.name}")
+                st.session_state.pdf_saved = True  # ANALYTICS: mark as saved
+            # END ANALYTICS TRACKING
+
         st.success(f"✅ PDF uploaded successfully — {pdf_file.name}")
 
     if not st.session_state.get("pdf_text"):
