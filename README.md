@@ -125,29 +125,28 @@ Ayushi Patel & Team
 Educational Content Generator AI Agent Project(Capabl).
 
 
-
 ## 📸 Project Screenshots
 
 ### 🏠 Home Dashboard
-![Home Dashboard](screenshorts\home_page.png)
+![Home Dashboard](screenshots/home_page.png)
 
 ### ⭐ Features
-![Features](screenshorts\features.png)
+![Features](screenshots/features.png)
 
 ### 🤖 AI Tutor
-![AI Tutor](screenshorts\tutor_page.png)
+![AI Tutor](screenshots/tutor_page.png)
 
 ### 📄 PDF Assistant
-![PDF Assistant](screenshorts\pdf_assistant_page.png)
+![PDF Assistant](screenshots/pdf_assistant_page.png)
 
 ### 🧠 Quiz Generator
-![Quiz Generator](screenshorts\quiz_page.png)
+![Quiz Generator](screenshots/quiz_page.png)
 
 ### 📝 Question Paper Generator
-![Question Paper Generator](screenshorts\que_paper_page.png)
+![Question Paper Generator](screenshots/que_paper_page.png)
 
 ### ✅ Task Manager
-![Task Manager](screenshorts\task_page.png)
+![Task Manager](screenshots/task_page.png)
 
 ### 📊 Analytics Dashboard
-![Analytics Dashboard](screenshorts\analytics_page.png)
+![Analytics Dashboard](screenshots/analytics_page.png)
